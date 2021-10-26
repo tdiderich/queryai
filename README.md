@@ -19,7 +19,7 @@
 ## Getting Started
 1. Clone this repository
 ```
-git clone https://github.com/tdiderich/queryai-scripts.git
+git clone https://github.com/tdiderich/queryai.git
 ```
 2. Clone .env_sample to .env under the same directory
 ```
@@ -27,8 +27,8 @@ cp .env_sample .env
 ```
 3. Update all of the secrets needed based on the script you'd like to run (NOTE: you need to rerun pipenv shell anytime you update these values to reload them)
 ```
-# PYTHON - this should be the path you cloned this repo into + /queryai-scripts
-PYTHONPATH=/path/to/queryai-scripts
+# PYTHON - this should be the path you cloned this repo into + /queryai
+PYTHONPATH=/path/to/queryai
 
 # AUTHENTICATION INFO
 org_name=<org_name>
