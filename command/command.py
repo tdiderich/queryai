@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 client = Client()
 
-def run_standard_command_with_relative_lookback(query, platform_alias, relative_lookback_minutes):
+def run_standard_command_with_relative_lookback(query: str, platform_alias: str, relative_lookback_minutes: int):
     path = 'command'
     currentEpochTime = datetime.utcnow()
     relativeEpochTime = currentEpochTime - timedelta(minutes=relative_lookback_minutes)
@@ -20,7 +20,7 @@ def run_standard_command_with_relative_lookback(query, platform_alias, relative_
     command_results = client.post(path=path, payload=payload)
     return command_results
 
-def check_async_command_status(tracking_id):
+def check_async_command_status(tracking_id: str):
     gathering_results = True
     while gathering_results:
         command_results = client.get(path='command_async', params={'tracking_id': tracking_id})
@@ -30,7 +30,7 @@ def check_async_command_status(tracking_id):
             time.sleep(5)
     return command_results
 
-def run_async_command_with_relative_lookback(query, platform_alias, relative_lookback_minutes):
+def run_async_command_with_relative_lookback(query: str, platform_alias: str, relative_lookback_minutes: int):
     path = 'command_async'
     currentEpochTime = datetime.utcnow()
     relativeEpochTime = currentEpochTime - timedelta(minutes=relative_lookback_minutes)
@@ -50,5 +50,5 @@ def run_async_command_with_relative_lookback(query, platform_alias, relative_loo
 if __name__ == '__main__':
     query = "<command> cs-falcon-search-device"
     platform_alias = "crowdstrike_falcon"
-    command_results = run_async_command_with_relative_lookback(query, platform_alias, 30)
+    command_results = run_async_command_with_relative_lookback(query=query, platform_alias=platform_alias, relative_lookback_minutes=30)
     print(command_results.json())
